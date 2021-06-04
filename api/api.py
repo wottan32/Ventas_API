@@ -23,10 +23,4 @@ class ProductoAPI(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-    def post(self, request):
-        serializers = Product(data=request.data)
-        if serializers.is_valid():
-            product = serializers.save()
-            return Response(serializers.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    
